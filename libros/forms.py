@@ -1,7 +1,6 @@
 from django import forms
 from .models import Libro
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
-#from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
@@ -153,32 +152,3 @@ class CustomChangePassword(PasswordChangeForm):
         })
     )    
 
-
-"""
-    def clean(self):
-            cleaned_data = super().clean()
-            username = cleaned_data.get('username')
-            password = cleaned_data.get('password1')
-
-            if username and password:
-                # Crear usuario temporal para comprobar similitud con el nombre
-                user = User(username=username)
-                try:
-                    # Ejecuta los validadores de contraseñas de Django
-                    validate_password(password, user=user)
-                except ValidationError as error:
-                    # Mapeo de códigos de error nativos a español
-                    mensajes_espanol = {
-                        'password_too_similar': 'La contraseña es demasiado similar al nombre de usuario.',
-                        'password_too_short': 'La contraseña es demasiado corta. Debe tener al menos 8 caracteres.',
-                        'password_too_common': 'Esta contraseña es demasiado común. Elige una más segura.',
-                        'password_entirely_numeric': 'La contraseña no puede contener únicamente números.',
-                    }
-
-                    for e in error.error_list:
-                        # Si el error está en nuestro diccionario, usamos la versión en español
-                        mensaje = mensajes_espanol.get(e.code, e.message)
-                        self.add_error('password1', mensaje)
-
-            return cleaned_data
-"""            

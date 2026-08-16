@@ -23,7 +23,6 @@ class RegistroView(CreateView):
     success_url = reverse_lazy('login')
 
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
-    from_clas = CustomChangePassword
     template_name = 'registration/cambiar_password.html'
     success_url = reverse_lazy('libro_list')
 
