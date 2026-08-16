@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render,redirect
 from .models import Libro
-from .forms import LibroForm, CustomLoginForm, CustomerUserCreationForm
+from .forms import LibroForm, CustomLoginForm, CustomerUserCreationForm, CustomPasswordChangeForm
 
 # --- VISTAS DE AUTENTICACIÓN Y USUARIOS ---
 
@@ -23,6 +23,7 @@ class RegistroView(CreateView):
     success_url = reverse_lazy('login')
 
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
+    form_class = CustomPasswordChangeForm
     template_name = 'registration/cambiar_password.html'
     success_url = reverse_lazy('libro_list')
 

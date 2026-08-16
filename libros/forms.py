@@ -35,6 +35,29 @@ class CustomLoginForm(AuthenticationForm):
         })
     )
 
+class CustomPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        label='Contraseña actual',
+        widget=forms.TextInput(attrs={
+            'class':'form-control',
+            'placeholder':'Ingresa la contraseña actual'
+        })
+    )
+    new_password1 = forms.CharField(
+        label='Contraseña nueva',
+        widget=forms.PasswordInput(attrs={
+            'class':'form-control',
+            'placeholder':'Ingresa tu nueva contraseña'
+        })
+    )
+    new_password2= forms.CharField(
+        label='Contraseña nueva (Confirmar)',
+        widget=forms.PasswordInput(attrs={
+            'class':'form-control',
+            'placeholder':'Confirma tu nueva contraseña'
+        })
+    )
+
 class CustomerUserCreationForm(UserCreationForm):
     username = forms.CharField(
         label='Usuario',
