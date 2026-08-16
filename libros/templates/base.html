@@ -12,13 +12,13 @@
             <div class="d-flex">
                 {% if user.is_authenticated %}
                     <span class="navbar-text me-3">Hola, {{ user.username }}</span>
-                    <a href="{% url 'cambiar_password' %}" class="btn btn-outline-light btn-sm me-2">Cambiar Contraseña</a>
+                    <a href="{% url 'cambiar_password' %}" class="btn btn-success btn-sm me-2">Cambiar Contraseña</a>
                     <form method="post" action="{% url 'logout' %}" class="d-inline">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-outline-danger btn-sm">Cerrar Sesión</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Cerrar Sesión</button>
                     </form>
                 {% else %}
-                    <a href="{% url 'login' %}" class="btn bg-success text-white btn-sm me-2">Iniciar Sesión</a>
+                    <a href="{% url 'login' %}" class="btn btn-success text-white btn-sm me-2">Iniciar Sesión</a>
                     <a href="{% url 'registro' %}" class="btn btn-primary btn-sm">Registrarse</a>
                 {% endif %}
             </div>

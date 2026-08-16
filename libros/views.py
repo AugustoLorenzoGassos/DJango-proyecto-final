@@ -3,24 +3,27 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import render,redirect
 from .models import Libro
-from .forms import LibroForm
+from .forms import LibroForm, CustomLoginForm, CustomerUserCreationForm, CustomChangePassword
 
 # --- VISTAS DE AUTENTICACIÓN Y USUARIOS ---
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
+    authentication_form = CustomLoginForm
     redirect_authenticated_user = True
 
 class CustomLogoutView(LogoutView):
     next_page = 'login'
 
 class RegistroView(CreateView):
-    form_class = UserCreationForm
+    form_class = CustomerUserCreationForm
     template_name = 'registration/registro.html'
     success_url = reverse_lazy('login')
 
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
+    from_clas = CustomChangePassword
     template_name = 'registration/cambiar_password.html'
     success_url = reverse_lazy('libro_list')
 
