@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render,redirect
 from .models import Libro
-from .forms import LibroForm, CustomLoginForm, CustomerUserCreationForm, CustomChangePassword
+from .forms import LibroForm, CustomLoginForm, CustomerUserCreationForm
 
 # --- VISTAS DE AUTENTICACIÓN Y USUARIOS ---
 

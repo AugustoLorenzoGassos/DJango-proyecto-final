@@ -126,29 +126,3 @@ class CustomerUserCreationForm(UserCreationForm):
                 raise forms.ValidationError(errores_traducidos)
 
         return password2
-
-class CustomChangePassword(PasswordChangeForm):
-    username = forms.CharField(
-        label='Usuario',
-        help_text= 'Requerido. 150 caracteres o menos. Solo letras, dígitos y @/./+/-/_',
-        widget=forms.TextInput(attrs={
-            'class':'form-control'       
-        })
-    )
-    password1 = forms.CharField(
-        label="Contraseña",
-        help_text='Mínimo 8 caracteres. No debe ser fácil de adivinar.',
-        widget=forms.PasswordInput(attrs={
-             'class':'form-control',
-             'placeholder':'Crea tu contraseña segura'
-        })
-    )
-    password2 = forms.CharField(
-        label="Confirmar contraseña",
-        help_text='Mínimo 8 caracteres. No debe ser fácil de adivinar.',
-        widget=forms.PasswordInput(attrs={
-             'class':'form-control',
-             'placeholder':'Repite tu contraseña segura'
-        })
-    )    
-
