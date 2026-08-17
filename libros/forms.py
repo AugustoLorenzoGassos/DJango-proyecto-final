@@ -18,6 +18,12 @@ class LibroForm(forms.ModelForm):
             'estado': forms.Select(attrs={'class': 'form-select'}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Cambia el texto por defecto en los select
+        self.fields['categoria'].empty_label = "Seleccione una categoría... "
+        self.fields['estado'].empty_label = "Seleccione una status..."
+
 class CustomLoginForm(AuthenticationForm):
     username = forms.CharField(
         label='Usuario',  # <--- Aquí cambias la etiqueta
